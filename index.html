@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G2 Painters — Professional Painting Services in Minnesota</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── BRAND PALETTE ──────────────────────────── */
+    :root {
+      --black:      #2b2b2b;
+      --black-mid:  #333333;
+      --black-lt:   #3c3c3c;
+      --green:      #5B6D34;
+      --green-h:    #4a5c2b;
+      --green-lt:   #6d8340;
+      --green-pale: rgba(91,109,52,0.12);
+      --slate:      #C3D1C6;
+      --sage:       #A2AA9C;
+      --offwhite:   #F5F6F3;
+      --border:     #dde3d8;
+      --text:       #4e5a4a;
+      --text-lt:    #7a857a;
+      --text-dk:    #1e2a1e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--green); text-decoration: none; transition: color 150ms ease; }
+    a:hover { color: var(--green-h); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    h1,h2,h3,h4,h5 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      color: var(--black);
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* ═══ TOP BAR ══════════════════════════════════ */
+    .top-bar {
+      background: var(--black);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(91,109,52,0.4);
+    }
+    .top-bar .inner {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1080px; margin: 0 auto; padding: 0 20px;
+    }
+    .top-bar .left { display: flex; align-items: center; gap: 20px; }
+    .top-bar .left a { color: var(--sage); font-size: 12.5px; transition: color 150ms ease; }
+    .top-bar .left a:hover { color: #fff; }
+    .top-bar .right { display: flex; align-items: center; gap: 14px; }
+    .top-bar .phone {
+      display: flex; align-items: center; gap: 5px;
+      color: #fff; font-weight: 700; font-size: 13.5px;
+    }
+    .top-bar .phone svg { color: var(--green); }
+
+    .btn-top {
+      background: var(--green); color: #fff;
+      padding: 6px 17px; border-radius: 999px;
+      font-size: 11.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      box-shadow: 0 0 22px rgba(91,109,52,0.7), 0 0 8px rgba(91,109,52,0.4);
+      transition: background 150ms ease, box-shadow 150ms ease;
+      white-space: nowrap;
+    }
+    .btn-top:hover {
+      background: var(--green-h); color: #fff;
+      box-shadow: 0 0 20px rgba(91,109,52,0.6);
+    }
+
+    /* ═══ NAV ══════════════════════════════════════ */
+    .nav-wrap {
+      background: var(--black-mid);
+      border-bottom: 2px solid var(--green);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo .logo-box {
+      background: #fff; border-radius: 5px; padding: 3px 8px;
+      display: inline-flex; align-items: center;
+    }
+    .nav-logo .logo-box img { height: 68px; width: auto; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .logo-name { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    .logo-tag  { font-size: 10px; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    .nav-links { display: flex; list-style: none; align-items: center; }
+    .nav-links li a {
+      display: block; padding: 20px 13px;
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+    .nav-links li a:hover { color: #fff; border-bottom-color: var(--green); }
+
+    .nav-mobile-cta {
+      display: none;
+      background: var(--green); color: #fff;
+      padding: 9px 20px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      box-shadow: 0 0 12px rgba(91,109,52,0.4);
+      white-space: nowrap;
+    }
+    .nav-mobile-cta:hover { background: var(--green-h); color: #fff; }
+
+    /* ═══ HERO ═════════════════════════════════════ */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 580px; background: #dcddd8;
+    }
+
+    .hero-content {
+      background: #dcddd8;
+      padding: 60px 52px 60px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; order: 1; z-index: 2;
+    }
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 16px;
+    }
+    .hero-content h1 {
+      font-size: 46px; color: var(--black); line-height: 1.08; margin-bottom: 18px;
+      font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
+    }
+    .hero-content h1 em { font-style: normal; color: var(--green); }
+    .hero-content p {
+      font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 10px;
+      max-width: 400px;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+    }
+    .hero-badge {
+      display: flex; align-items: center; gap: 6px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px; padding: 5px 13px;
+      font-size: 12px; font-weight: 600; color: var(--text-dk);
+    }
+    .hero-badge svg { color: var(--green); flex-shrink: 0; }
+
+    .hero-image { position: relative; overflow: hidden; order: 2; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-image::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right,
+        #dcddd8 0%,
+        rgba(220,221,216,0.85) 15%,
+        rgba(220,221,216,0.4) 35%,
+        rgba(220,221,216,0.08) 55%,
+        transparent 75%
+      );
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin-top: 22px; background: var(--green); color: #fff;
+      padding: 13px 28px; border-radius: 999px;
+      font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      box-shadow: 0 0 18px rgba(91,109,52,0.4);
+      transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+      align-self: flex-start; border: none; cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--green-h); color: #fff;
+      box-shadow: 0 0 28px rgba(91,109,52,0.6);
+      transform: translateY(-1px);
+    }
+
+    /* ═══ SECTION SHARED ═══════════════════════════ */
+    .section-header { text-align: center; margin-bottom: 44px; }
+    .section-header .eyebrow { margin-bottom: 8px; }
+    .section-header h2 { font-size: 28px; margin-bottom: 10px; color: var(--black); }
+    .section-header p { font-size: 14px; color: var(--text-lt); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .section-header.light h2 { color: #fff; }
+    .section-header.light p { color: rgba(255,255,255,0.5); }
+
+    /* ═══ SERVICE CARDS ════════════════════════════ */
+    .services-row { background: var(--offwhite); padding: 58px 0 66px; }
+    .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
+    .service-card {
+      background: #fff; border-radius: 4px; overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(23,23,23,0.13); }
+    .service-card .card-img { width: 100%; height: 185px; object-fit: cover; }
+    .service-card .card-body { padding: 18px 18px 22px; }
+    .service-card h3 { font-size: 15px; color: var(--black); margin-bottom: 8px; font-weight: 700; }
+    .service-card p { font-size: 13px; color: var(--text); line-height: 1.65; }
+    .service-card .read-more {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 12px; font-size: 11.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: var(--green);
+    }
+    .service-card .read-more:hover { color: var(--green-h); }
+
+    /* ═══ CAPABILITIES ══════════════════════════════ */
+    .capabilities { background: #fff; padding: 64px 0; }
+    .cap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .cap-card {
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--green);
+      padding: 26px 22px; border-radius: 4px;
+      transition: background 200ms ease, box-shadow 200ms ease;
+    }
+    .cap-card:hover { background: #fff; box-shadow: 0 6px 24px rgba(23,23,23,0.08); }
+    .cap-card .icon {
+      width: 38px; height: 38px; background: var(--green-pale);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .cap-card .icon svg { color: var(--green); }
+    .cap-card h4 { font-size: 14.5px; color: var(--black); margin-bottom: 8px; font-weight: 700; }
+    .cap-card p { font-size: 13px; color: var(--text); line-height: 1.65; }
+
+    /* ═══ SERVICE ICONS ROW ════════════════════════ */
+    .icon-services { background: var(--black-lt); padding: 40px 0; }
+    .icon-services-grid { display: grid; grid-template-columns: repeat(5,1fr); }
+    .icon-svc {
+      text-align: center; padding: 26px 16px;
+      border-right: 1px solid rgba(91,109,52,0.2);
+      transition: background 150ms ease; cursor: pointer;
+    }
+    .icon-svc:last-child { border-right: none; }
+    .icon-svc:hover { background: rgba(91,109,52,0.1); }
+    .icon-svc .svc-icon { width: 50px; height: 50px; margin: 0 auto 14px; }
+    .icon-svc .svc-icon svg { width: 100%; height: 100%; color: var(--green); }
+    .icon-svc h4 {
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8);
+      text-transform: uppercase; letter-spacing: 0.07em; line-height: 1.4;
+    }
+
+    /* ═══ WHY G2 SECTION ═══════════════════════════ */
+    .why-g2 { padding: 66px 0; background: #fff; }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .why-text .eyebrow { margin-bottom: 10px; }
+    .why-text h2 { font-size: 27px; color: var(--black); margin-bottom: 16px; }
+    .why-text h2 span { color: var(--green); }
+    .why-text p { font-size: 14.5px; color: var(--text); line-height: 1.75; margin-bottom: 14px; }
+    .why-list { list-style: none; margin-top: 18px; }
+    .why-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 11px; font-size: 13.5px; color: var(--text-dk);
+    }
+    .why-list li::before {
+      content: '✓'; color: var(--green); font-weight: 800;
+      font-size: 14px; margin-top: 1px; flex-shrink: 0;
+    }
+    .why-image { position: relative; }
+    .why-image img { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; }
+    .why-image::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(23,23,23,0.65) 100%);
+      border-radius: 4px; z-index: 1;
+    }
+    .why-badge {
+      position: absolute; bottom: 20px; left: 20px; z-index: 2;
+      background: var(--green); color: #fff;
+      padding: 14px 20px; border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+    .why-badge .num { font-size: 30px; font-weight: 800; line-height: 1; }
+    .why-badge .lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; opacity: 0.9; }
+
+    /* ═══ CERT BAR ═════════════════════════════════ */
+    .cert-bar {
+      background: var(--black-mid);
+      padding: 24px 0;
+      border-top: 1px solid rgba(91,109,52,0.3);
+      border-bottom: 1px solid rgba(91,109,52,0.3);
+    }
+    .cert-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .cert-item { display: flex; align-items: center; gap: 9px; }
+    .cert-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(91,109,52,0.15); border: 1px solid rgba(91,109,52,0.45);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9.5px; font-weight: 800; text-align: center; line-height: 1.2;
+      color: var(--green);
+    }
+    .cert-item span { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.7); }
+
+    /* ═══ REVIEWS ══════════════════════════════════ */
+    .reviews { background: var(--offwhite); padding: 62px 0; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .review-card {
+      background: #fff; padding: 26px; border-radius: 4px;
+      border: 1px solid var(--border); border-top: 3px solid var(--green);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .review-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(23,23,23,0.1); }
+    .review-stars { color: var(--green); font-size: 16px; margin-bottom: 13px; }
+    .review-text { font-size: 13.5px; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+    .review-author { font-size: 13px; font-weight: 700; color: var(--black); }
+    .review-source { font-size: 11px; color: var(--text-lt); margin-top: 2px; }
+
+    /* ═══ CONTACT ══════════════════════════════════ */
+    .contact-section { background: var(--black); padding: 62px 0; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info .eyebrow { margin-bottom: 10px; }
+    .contact-info h2 { font-size: 27px; color: #fff; margin-bottom: 14px; }
+    .contact-info p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 26px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .contact-detail svg { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail span { font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.5; }
+    .contact-detail strong { color: #fff; }
+
+    .contact-form {
+      background: var(--black-mid);
+      border: 1px solid rgba(91,109,52,0.3); border-radius: 5px; padding: 30px;
+    }
+    .contact-form h3 { font-size: 17px; color: #fff; margin-bottom: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; color: rgba(255,255,255,0.55);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(91,109,52,0.3);
+      border-radius: 4px; padding: 9px 12px;
+      font-size: 13px; font-family: inherit; color: #fff; outline: none;
+      transition: border-color 150ms ease;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.28); }
+    .form-group select { color: rgba(255,255,255,0.65); }
+    .form-group select option { background: #1f1f1f; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--green); }
+
+    /* ═══ FOOTER ═══════════════════════════════════ */
+    footer { background: #222222; color: rgba(255,255,255,0.55); }
+    .footer-top { padding: 52px 0 38px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 44px; }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #fff; margin-bottom: 18px;
+      padding-bottom: 10px; border-bottom: 2px solid var(--green); display: inline-block;
+    }
+    .footer-col p { font-size: 13px; line-height: 1.75; margin-bottom: 10px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.5); font-size: 13px; transition: color 150ms ease; }
+    .footer-col ul li a:hover { color: var(--green); }
+    .footer-col .ftr-contact { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; }
+    .footer-col .ftr-contact svg { flex-shrink: 0; margin-top: 2px; color: var(--green); }
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .badge-box {
+      background: rgba(91,109,52,0.12); border: 1px solid rgba(91,109,52,0.3);
+      border-radius: 3px; padding: 5px 11px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; color: rgba(255,255,255,0.6);
+    }
+    .social-links { display: flex; gap: 9px; margin-top: 18px; }
+    .social-links a {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(91,109,52,0.12); border: 1px solid rgba(91,109,52,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.55); transition: background 150ms ease, color 150ms ease;
+    }
+    .social-links a:hover { background: var(--green); color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding: 17px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: rgba(255,255,255,0.28);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.28); }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ═══ RESPONSIVE ════════════════════════════════ */
+
+    /* ── Tablet (≤ 980px) ── */
+    @media (max-width: 980px) {
+      .top-bar .left { display: none; }
+      .top-bar .inner { justify-content: center; }
+      .top-bar .phone { font-size: 13px; }
+
+      .nav-links { display: none; }
+      .nav-inner { min-height: 56px; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { height: 300px; order: -1; }
+      .hero-image::after { display: none; }
+      .hero-content { padding: 36px 28px; order: 2; }
+      .hero-content h1 { font-size: 34px; }
+
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .cap-grid { grid-template-columns: repeat(2,1fr); }
+      .icon-services-grid { grid-template-columns: repeat(3,1fr); }
+
+      .why-inner { grid-template-columns: 1fr; gap: 30px; }
+      .why-image img { height: 280px; }
+
+      .reviews-grid { grid-template-columns: 1fr; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    }
+
+    /* ── Mobile (≤ 640px) ── */
+    @media (max-width: 640px) {
+      /* Top bar */
+      .top-bar { display: none; }
+
+      /* Nav */
+      .nav-inner { min-height: 60px; padding: 0 16px; }
+      .nav-logo .logo-box img { height: 48px; }
+      .nav-mobile-cta { display: inline-flex; }
+
+      /* Hero */
+      .hero-content { padding: 30px 20px; }
+      .hero-content h1 { font-size: 28px; }
+      .hero-content p { font-size: 13.5px; }
+      .hero-badges { gap: 7px; }
+      .hero-badge { font-size: 11px; padding: 4px 10px; }
+      .btn-primary { font-size: 12px; padding: 11px 22px; }
+
+      /* Sections */
+      .services-row { padding: 40px 0 48px; }
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card .card-img { height: 200px; }
+
+      .capabilities { padding: 44px 0; }
+      .cap-grid { grid-template-columns: 1fr; gap: 14px; }
+
+      .icon-services { padding: 28px 0; }
+      .icon-services-grid { grid-template-columns: repeat(2,1fr); }
+      .icon-svc { padding: 20px 12px; }
+      .icon-svc .svc-icon { width: 38px; height: 38px; margin-bottom: 10px; }
+      .icon-svc h4 { font-size: 11px; }
+
+      .why-g2 { padding: 44px 0; }
+      .why-inner { gap: 24px; }
+      .why-text h2 { font-size: 22px; }
+      .why-image img { height: 240px; }
+
+      .reviews { padding: 44px 0; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      .contact-section { padding: 44px 0; }
+      .contact-info h2 { font-size: 22px; }
+      .contact-form { padding: 22px 18px; }
+      .form-row { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Section headers */
+      .section-header { margin-bottom: 30px; }
+      .section-header h2 { font-size: 22px; }
+      .section-header p { font-size: 13px; }
+
+      /* Footer */
+      .footer-top { padding: 36px 0 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+      /* Container padding */
+      .container { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ TOP BAR ════════════════════════════════════════════════ -->
+  <div class="top-bar">
+    <div class="inner">
+      <div class="left">
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#">Gallery</a>
+      </div>
+      <div class="right">
+        <span class="phone">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (612) 555-0147
+        </span>
+        <a href="#contact" class="btn-top">Get My Free Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAVIGATION ════════════════════════════════════════════ -->
+  <div class="nav-wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-box">
+          <img src="G2 Logo.jpg" alt="G2 Painters" />
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="tel:3202822547" class="nav-mobile-cta">Call Now</a>
+    </div>
+  </div>
+
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80"
+        alt="Beautiful lit Minnesota home exterior at dusk"
+      />
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">Minnesota's Trusted Painting Professionals</p>
+      <h1>Professional Painting<br />Across the <em>Twin Cities</em></h1>
+      <p>
+        G2 Painters delivers flawless interior and exterior paint jobs throughout the Minneapolis–St. Paul metro and surrounding Minnesota communities. Quality work, honest pricing, every time.
+      </p>
+      <p>
+        From a single room refresh to a full exterior makeover — Great People. Great Service. Guaranteed.
+      </p>
+      <div class="hero-badges">
+        <span class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Free Estimates
+        </span>
+        <span class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Licensed & Insured
+        </span>
+        <span class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.9★ Rating
+        </span>
+      </div>
+      <a href="#contact" class="btn-primary">
+        Get My Free Quote →
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ══ SERVICE CARDS ══════════════════════════════════════════ -->
+  <section id="services" class="services-row">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">What We Do</p>
+        <h2>Painting Services Built for Your Home</h2>
+        <p>From a single accent wall to a full exterior coat — every project gets our full attention and a perfect finish.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <img class="card-img"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&h=370&q=80"
+            alt="Freshly painted living room" />
+          <div class="card-body">
+            <h3>Interior Painting</h3>
+            <p>Walls, ceilings, trim, and doors — we prep everything properly and apply every coat with precision for a finish that lasts.</p>
+            <a href="#" class="read-more">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img class="card-img"
+            src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&h=370&q=80"
+            alt="Freshly painted dining room" />
+          <div class="card-body">
+            <h3>Exterior Painting</h3>
+            <p>Boost curb appeal and protect your Minnesota home through harsh winters. We use premium exterior coatings built to last.</p>
+            <a href="#" class="read-more">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img class="card-img"
+            src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=600&h=370&q=80"
+            alt="Freshly painted kitchen" />
+          <div class="card-body">
+            <h3>Cabinet Refinishing</h3>
+            <p>Give your kitchen or bathroom a fresh new look without the cost of replacement. A stunning transformation for a fraction of the price.</p>
+            <a href="#" class="read-more">Learn More →</a>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <img class="card-img"
+            src="https://s3-us-west-2.amazonaws.com/dunndiy.com/project-images/Dunn-DIY-Seattle-WA-Deck-Refinish-23.jpg"
+            alt="Freshly stained deck and fence" />
+          <div class="card-body">
+            <h3>Deck &amp; Fence Staining</h3>
+            <p>Protect your outdoor wood surfaces from Minnesota's freeze-thaw cycles with weather-resistant stains and sealers that last season after season.</p>
+            <a href="#" class="read-more">Learn More →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ WHY G2 (dark) ══════════════════════════════════════════ -->
+  <section class="capabilities" id="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">The G2 Difference</p>
+        <h2>Why Minnesota Homeowners Choose G2</h2>
+        <p>We're not just painters — we're your neighbors. Built on honesty, skill, and a genuine care for your home.</p>
+      </div>
+      <div class="cap-grid">
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h4>Meticulous Prep Work</h4>
+          <p>We protect your furniture, floors, and trim before touching a brush. Proper prep is what separates a good paint job from a great one.</p>
+        </div>
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>On-Time, Every Time</h4>
+          <p>We respect your schedule. Our crews show up when promised and complete projects on time — no chasing us down for updates.</p>
+        </div>
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Licensed &amp; Fully Insured</h4>
+          <p>Every G2 Painters crew is Minnesota-licensed and fully covered with liability and workers' comp — so your home and family are always protected.</p>
+        </div>
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h4>Clear Communication</h4>
+          <p>We walk you through every step before we start. Transparent quotes, honest timelines, and no surprise charges at the end of the job.</p>
+        </div>
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h4>Premium Paint &amp; Materials</h4>
+          <p>We use only top-rated brands — Sherwin-Williams, Benjamin Moore — chosen for Minnesota's climate extremes and long-term durability.</p>
+        </div>
+
+        <div class="cap-card">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></div>
+          <h4>Satisfaction Guaranteed</h4>
+          <p>We don't consider a job done until you're 100% happy. Final walkthrough included on every project — we fix anything that isn't perfect.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ SERVICE ICONS ROW ══════════════════════════════════════ -->
+  <section class="icon-services">
+    <div class="container">
+      <div class="icon-services-grid">
+
+        <div class="icon-svc">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h4>Interior<br/>Painting</h4>
+        </div>
+
+        <div class="icon-svc">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Exterior<br/>Painting</h4>
+        </div>
+
+        <div class="icon-svc">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="8" rx="1"/><rect x="2" y="13" width="20" height="8" rx="1"/><line x1="12" y1="7" x2="12.01" y2="7" stroke-width="2"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="2"/></svg>
+          </div>
+          <h4>Cabinet<br/>Refinishing</h4>
+        </div>
+
+        <div class="icon-svc">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="4" y2="18"/><line x1="12" y1="6" x2="12" y2="18"/><line x1="20" y1="6" x2="20" y2="18"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="2" y1="15" x2="22" y2="15"/></svg>
+          </div>
+          <h4>Deck &amp; Fence<br/>Staining</h4>
+        </div>
+
+        <div class="icon-svc">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Licensed &amp;<br/>Insured</h4>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ G2 ADVANTAGE SECTION ═══════════════════════════════════ -->
+  <section id="process" class="why-g2">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-text">
+          <p class="eyebrow">Friendly · Reliable · Approachable</p>
+          <h2>Minnesota's <span>Hometown Painters</span></h2>
+          <p>
+            G2 Painters was built on the belief that great results start with great people. We're a local Minnesota company that treats your home like our own — showing up on time, cleaning up every day, and delivering the finish you envisioned.
+          </p>
+          <p>
+            Whether you're refreshing a living room before the holidays or protecting your deck from another Minnesota winter, our team handles every job with the same level of care and craftsmanship.
+          </p>
+          <ul class="why-list">
+            <li>Serving the Twin Cities metro and surrounding communities</li>
+            <li>Free color consultations with every project</li>
+            <li>All workers are background-checked G2 employees</li>
+            <li>We use low-VOC and eco-friendly paints on request</li>
+            <li>Exterior work scheduled around Minnesota weather windows</li>
+            <li>100% satisfaction guarantee — we make it right, period</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="margin-top:26px;">
+            Schedule a Free Estimate →
+          </a>
+        </div>
+        <div class="why-image">
+          <img
+            src="https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop"
+            alt="Professional painter rolling paint on wall in Minnesota home"
+          />
+          <div class="why-badge">
+            <div class="num">500+</div>
+            <div class="lbl">MN Homes<br/>Painted</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ REVIEWS ════════════════════════════════════════════════ -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Customer Reviews</p>
+        <h2>What Minnesota Homeowners Are Saying</h2>
+        <p>Hundreds of happy customers across the Twin Cities and greater Minnesota</p>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"G2 Painters completely transformed our living room and kitchen. They were incredibly professional, showed up every day on time, and cleaned up perfectly before they left. The walls look absolutely flawless. Best money I've spent on the house."</p>
+          <div class="review-author">— Sarah M., Eden Prairie MN</div>
+          <div class="review-source">Google Review</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Had G2 paint the full exterior of our home before winter. They squeezed the project in during a perfect weather window and the result looks incredible. Neighbors have been asking who did the work ever since. Highly recommend!"</p>
+          <div class="review-author">— David K., Maple Grove MN</div>
+          <div class="review-source">Google Review</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The cabinet refinishing team was phenomenal. My kitchen looks like a total renovation at a fraction of the cost. They were tidy, fast, and the finish is smoother than I thought possible. Will absolutely use G2 again for our deck next summer."</p>
+          <div class="review-author">— Jennifer R., Woodbury MN</div>
+          <div class="review-source">Google Review</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ CONTACT FORM ═══════════════════════════════════════════ -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-info">
+          <p class="eyebrow">Get Started Today</p>
+          <h2>Get My Free Quote</h2>
+          <p>
+            Ready for a fresh coat? Fill out the form and we'll be in touch within 24 hours with a free, no-obligation estimate. Proudly serving Minneapolis, St. Paul, and the surrounding Minnesota communities.
+          </p>
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span><strong>(320) 282-2547</strong></span>
+          </div>
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Hans@g2Painters.com</span>
+          </div>
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Twin Cities Metro, MN<br/>& Surrounding Communities</span>
+          </div>
+          <div class="contact-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon–Fri: 7:00 AM – 6:00 PM<br/>Sat: 8:00 AM – 2:00 PM</span>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Request a Free Estimate</h3>
+          <form onsubmit="return false;" style="display:flex;flex-direction:column;gap:14px;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="First Name" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Last Name" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(612) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="jane@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Service Needed</label>
+              <select>
+                <option value="">Select a service...</option>
+                <option>Interior Painting</option>
+                <option>Exterior Painting</option>
+                <option>Cabinet Refinishing</option>
+                <option>Deck &amp; Fence Staining</option>
+                <option>Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Us About Your Project</label>
+              <textarea rows="3" placeholder="Briefly describe what you'd like painted..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="align-self:stretch;text-align:center;justify-content:center;border-radius:4px;">
+              Get My Free Quote →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-col">
+            <h4>G2 Painters</h4>
+            <p>Great People. Great Service. Minnesota's trusted residential painting company — serving the Twin Cities metro and surrounding communities.</p>
+            <div class="footer-badges">
+              <span class="badge-box">Free Estimates</span>
+              <span class="badge-box">Insured</span>
+            </div>
+            <div class="social-links">
+              <a href="#" title="Facebook">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" title="Instagram">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="#" title="Google">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Interior Painting</a></li>
+              <li><a href="#">Exterior Painting</a></li>
+              <li><a href="#">Cabinet Refinishing</a></li>
+              <li><a href="#">Deck &amp; Fence Staining</a></li>
+              <li><a href="#">Color Consultation</a></li>
+              <li><a href="#">Commercial Painting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About G2</a></li>
+              <li><a href="#">Our Process</a></li>
+              <li><a href="#">Project Gallery</a></li>
+              <li><a href="#">Reviews</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="ftr-contact">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>(320) 282-2547</span>
+            </div>
+            <div class="ftr-contact">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Hans@g2Painters.com</span>
+            </div>
+            <div class="ftr-contact">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Twin Cities Metro, MN</span>
+            </div>
+            <p style="margin-top:12px;font-size:12px;line-height:1.6;">
+              <strong style="color:#fff;">Hours:</strong><br/>
+              Mon–Fri: 7 AM – 6 PM<br/>
+              Sat: 8 AM – 2 PM
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 G2 Painters LLC. All rights reserved. · <a href="#">Privacy Policy</a> · <a href="#">Sitemap</a></span>
+        <span>Great People. Great Service.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
